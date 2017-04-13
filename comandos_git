@@ -1,0 +1,30 @@
+
+
+;configurar cuenta
+git config --global user.name "username"
+git config --global user.email	"email"
+git init 
+git remote add origin http://github.com/francisco30er/Lab_de_Micros.git
+
+
+; para subir los archicos a github
+git add .
+git commit -m 'descripcion'
+git push origin master 
+
+;descargar los archivos que hay en git
+git clone http://github.com/francisco30er/nombrerepertorio.git
+
+
+;para ver las URLs ingresadas
+git remote -v
+
+;borrar archivo
+git rm archivo1.txt
+
+
+git fetch origin master    ;recupera el trabajo realizado por otras personas
+
+git pull origin master
+
+
