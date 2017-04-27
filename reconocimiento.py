@@ -55,11 +55,15 @@ while True:
 	cara = '%s' % (names[prediction[0]])
 #Encender led en caso de que la cara se de miguel
 	if cara == "pancho":
-		print "se reconocio el pichel de pancho"
-
+		print "se reconoce el pichel de pancho"
+	if cara == "memo":
+		print "se reconoce el pichel de memo"
+	if cara == "negro":
+		print "se reconoce el pichel del negro"
+		#os.system("sudo ./encender_led.sh")
 #Si la cara es desconocida, poner desconocido
 	else:
-		print "no se reconoce" 
+		print "no se reconoce nada"
 		cv2.putText(frame, 'Desconocido', (x-10, y-10), 		cv2.FONT_HERSHEY_PLAIN,1,(0, 255, 0))
  #Apagar Led
 	#os.system("sudo ./apagar_led.sh")
