@@ -10,7 +10,7 @@ if not os.path.isdir(path):
 haar_cascade = cv2.CascadeClassifier(fn_haar)
 webcam = cv2.VideoCapture(0)
 count = 0
-while count < 20:
+while count < 80:
     (rval, im) = webcam.read()
     im = cv2.flip(im, 1, 0)
     gray = cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
