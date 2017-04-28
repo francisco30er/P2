@@ -60,6 +60,9 @@ while True:
 		print "se reconoce el pichel de memo"
 	if cara == "negro":
 		print "se reconoce el pichel del negro"
+	if cara == "ronald":
+		print "se reconoce el pichel del ronald"
+	
 		#os.system("sudo ./encender_led.sh")
 #Si la cara es desconocida, poner desconocido
 	else:
@@ -72,3 +75,5 @@ while True:
        
 	if key == 27:
 		break
+
+# scrip bash
