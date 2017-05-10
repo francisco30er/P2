@@ -1,0 +1,4 @@
+#!/bin/bash
+readlink -f reconocimiento.py
+python capture.py pancho
+python reconocimiento.py
