@@ -56,7 +56,6 @@ while True:
 #Encender led en caso de que la cara se de miguel
 	if cara == "pancho":
 		print "se reconocio el pichel de pancho"
-
 #Si la cara es desconocida, poner desconocido
 	else:
 		print "no se reconoce" 
