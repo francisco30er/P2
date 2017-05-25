@@ -2,7 +2,6 @@ import os
 import sys
 import smtplib
 import time
-import picamera
 from time import sleep
 import RPi.GPIO as GPIO
 
@@ -19,6 +18,7 @@ GPIO.setup(button2,GPIO.IN,pull_up_down=GPIO.PUD_UP)
 servopin=11
 GPIO.setup(servopin,GPIO.OUT)
 pwm=GPIO.PWM(servopin,50)
+##pwm.start(4)
 
 ##Peajes
 M_liviano= '2250'
@@ -83,6 +83,7 @@ def readtxt():
 			Name = N.name
 			Plate = N.plate
 			Mail= N.mail
+			#Monto=M_liviano
 			tip= N.type
 			if tip == tip1:
 				Monto=M_liviano
@@ -91,42 +92,27 @@ def readtxt():
 			if tip == tip3:
 				Monto=M_carga
 			send(Name,Plate,Mail,Monto)
-                        
-			pwm.start(10)
 
-			time.sleep(.35)
-			pwm.ChangeDutyCycle(0)
-			b=0
-			while(b<1):
-                                if GPIO.input(button2)==0:
-                                        pwm.ChangeDutyCycle(.1)
-
-					time.sleep(.35)
-					pwm.ChangeDutyCycle(0)
-                                        b=b+1
-                                        
-                                        
-                                        
+			##pwm.start(8.5)
+			##while(b<1):
+                        ##        if GPIO.input(button2)==0:
+                        ##                pwm.ChangeDutyCycle(4)
+                        ##                b=b+1
                         
                         break
 		if i == len(User_list):
 			print "Vehiculo no registrado"
 	archi.close()
-        os.remove("placa.txt")
-	
-##Main
-while(1):
-        a=0
-	while(a<1):
-	        if GPIO.input(button1)==0:
-	                with picamera.PiCamera() as picx:
-                                picx.start_preview()
-                                time.sleep(0.001)
-                                picx.capture('foto1.jpg')
-                                picx.stop_preview()
-                                picx.close()
-	               
-                        os.system("alpr foto1.jpg >> placa.txt")
-                        readtxt()
-                        a=a+1
 
+a=0
+##Main
+#while(1):
+#	while(a<1):
+#	        if GPIO.input(button1)==0:
+#	                os.system('fswebcam -r 640x480 --jpeg 85 -D 1 fotito.jpg')
+	
+#	                a=a+1
+#		os.system("alpr plate.jpg >> placa.txt")
+#		readtxt()
+#		a=0
+readtxt()

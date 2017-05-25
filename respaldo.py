@@ -2,7 +2,6 @@ import os
 import sys
 import smtplib
 import time
-import picamera
 from time import sleep
 import RPi.GPIO as GPIO
 
@@ -10,15 +9,14 @@ import RPi.GPIO as GPIO
 ##Boton, Foto
 GPIO.setmode(GPIO.BOARD)
 button1=16
-button2=15
 a=0
-b=0
 GPIO.setup(button1,GPIO.IN,pull_up_down=GPIO.PUD_UP)
-GPIO.setup(button2,GPIO.IN,pull_up_down=GPIO.PUD_UP)
+
 ##Servo
 servopin=11
 GPIO.setup(servopin,GPIO.OUT)
 pwm=GPIO.PWM(servopin,50)
+##pwm.start(4)
 
 ##Peajes
 M_liviano= '2250'
@@ -59,16 +57,12 @@ class User:
 		self.type = type
 		User_list.append(self)
 
-file=open('datos.txt','r')
-lines=file.readlines()
-for N in lines:
-	nombre,placa,correo,tipo,empty=N.split(",")
-	User(nombre,placa,correo,tipo)
-file.close()
+user1 = User("Freddy Salazar","BGV797","freddysalazar95@gmail.com","Carga")
+user2 = User("Eduardo Zuniga","845598","josedu.mec@gmail.com","Pesado")
+user3 = User("Randall Duran","628882","randall.d.s209@gmail.com", "Liviano")
+user4 = User("Franciso Elizondo","488465","francisco30er@gmail.com","Pesado")
 
-tip1="Liviano"
-tip2="Pesado"
-tip3="Carga"
+
 ##Verificacion de placa
 def readtxt():
 	archi=open('placa.txt','r')
@@ -76,57 +70,38 @@ def readtxt():
 	plate=archi.readline()
 	plate=plate[6:12]
 	i=0
-	b=0
 	for N in User_list:
 		i += 1
 		if N.plate==plate:
 			Name = N.name
 			Plate = N.plate
 			Mail= N.mail
-			tip= N.type
-			if tip == tip1:
+			if N.type == "Liviano":
 				Monto=M_liviano
-			if tip == tip2:
+			if N.type == "Pesado":
 				Monto=M_pesado
-			if tip == tip3:
+			if N.type == "Carga":
 				Monto=M_carga
 			send(Name,Plate,Mail,Monto)
-                        
-			pwm.start(10)
 
-			time.sleep(.35)
-			pwm.ChangeDutyCycle(0)
-			b=0
-			while(b<1):
-                                if GPIO.input(button2)==0:
-                                        pwm.ChangeDutyCycle(.1)
+			pwm.start(8.5)
+			time.sleep(5)
+			pwm.ChangeDutyCycle(4)
 
-					time.sleep(.35)
-					pwm.ChangeDutyCycle(0)
-                                        b=b+1
-                                        
-                                        
-                                        
-                        
-                        break
+			break
 		if i == len(User_list):
 			print "Vehiculo no registrado"
 	archi.close()
-        os.remove("placa.txt")
-	
+
+a=0
 ##Main
 while(1):
-        a=0
 	while(a<1):
 	        if GPIO.input(button1)==0:
-	                with picamera.PiCamera() as picx:
-                                picx.start_preview()
-                                time.sleep(0.001)
-                                picx.capture('foto1.jpg')
-                                picx.stop_preview()
-                                picx.close()
-	               
-                        os.system("alpr foto1.jpg >> placa.txt")
-                        readtxt()
-                        a=a+1
+	                os.system('fswebcam -r 640x480 --jpeg 85 -D 1 fotito.jpg')
+	
+	                a=a+1
+	os.system("alpr plate.jpg >> placa.txt")
+	readtxt()
+	a=0
 

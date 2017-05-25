@@ -1,0 +1,5 @@
+Freddy Salazar,LYZ395,freddysalazar95@gmail.com,Pesado,empty
+Eduardo Zuniga,TVL017,josedu.mec@gmail.com,Pesado,empty
+Randall Duran,628882,randall.d.s209@gmail.com,Liviano,empty
+Franciso Elizondo,TVL017,francisco30er@gmail.com,Pesado,empty
+
