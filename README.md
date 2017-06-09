@@ -14,6 +14,18 @@ tar zxf RPi.GPIO-0.5.4.tar.gz
 cd RPi.GPIO-0.5.4.tar.gz
 sudo python setup.py install
 ```
+Para el control de la cámara en Python sebe instalar la librería picamara. 
+Instalación
+
+Antes de nada conectaremos el módulo de cámara al puerto CSI de la Raspberry Pi estando desconectada de la red eléctrica. Luego arrancamos la Raspberry e iniciamos sesión con nuestro usuario y contraseña. Abrimos una ventana de la terminal y escribimos:
+```
+sudo raspi-config
+sudo raspi-config
+```
+En el menú seleccionamos la opción ‘Enable Camera‘ luego le damos a ‘Enable‘ y a ‘Finish‘ para reiniciar la Raspberry. Una vez instalado y activado el módulo de cámara vamos a instalar la librería:
+```
+sudo apt-get install python-picamera
+```
 Para correr el programa se de deben tener los archivos Final.py y datos.txt en una misma carpeta. Se ejecuta el código con el comando
 ```
 sudo python Final.py
