@@ -31,3 +31,4 @@ Para correr el programa se de deben tener los archivos Final.py y datos.txt (est
 ```
 sudo python Final.py
 ```
+Para más información ver el archivo Manual.pdf
