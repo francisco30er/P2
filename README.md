@@ -1,5 +1,5 @@
-# Cobro automático de peajes y estacionamientos.
-El proyecto consiste en un sistema de reconocimiento de imágenes en que al utilizar una cámara, se identifica el número de placa de un vehículo y este se asocia con una cuenta bancaria mediante una base de datos desde la cual se rebajan los costos del servicio.
+# Prototipo de cobro automático de peajes y estacionamientos.
+El proyecto consiste en sistema de reconocimiento de imágenes en que al utilizar una cámara, se identifica el número de placa de un vehículo y este se asocia con una cuenta bancaria mediante una base de datos desde la cual se rebajan los costos del servicio.
 
 Para el control de la aplicación se utilizó una Raspberry pi 3. Debe tener instalada la librería ALPR, con el éste comando 
 ```
